@@ -1,5 +1,5 @@
-    <header>
-        <img src="#" alt="logo">
+    <header class="general-header">
+        <img src="#" alt="logo" class="logo-img">
         <nav class="nav">
             <a href="#" class="nav-links">À propos</a>
             <a href="#" class="nav-links">Formules</a>

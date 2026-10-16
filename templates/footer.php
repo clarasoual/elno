@@ -1,4 +1,4 @@
-    <footer class="footer">
+    <footer class="general-footer">
         <nav class="nav">
             <a href="#" class="nav-links">Règlement</a>
             <a href="#" class="nav-links">Politique de confidentialité</a>

@@ -10,4 +10,37 @@ body {
     background-color: var(--color-background);
     color : var(--color-text) ;
     margin:0;
+
+    font-family: 'Montserrat', Arial, sans-serif ;
+}
+
+.general-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.general-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: var(--color-title);
+    font-weight: 400;
+}
+
+.nav-links:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
 }
