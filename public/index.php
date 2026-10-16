@@ -7,16 +7,7 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
-
-    <header>
-        <img src="#" alt="logo">
-        <nav class="nav">
-            <a href="#" class="nav-links">À propos</a>
-            <a href="#" class="nav-links">Formules</a>
-            <a href="#" class="nav-links">Réserver</a>
-        </nav>
-    </header>
-
+<?php require __DIR__ . "/../templates/header.php" ; ?>
     <main>
         <section class="hero">
             <img src="#" alt="Image Musiciens" class="img-hero">
@@ -43,15 +34,8 @@
             <p class="text">Pour plus de questions, contactez le 0607080910</p>
         </section>
     </main>
-
-    <footer class="footer">
-        <nav class="nav">
-            <a href="#" class="nav-links">Règlement</a>
-            <a href="#" class="nav-links">Politique de confidentialité</a>
-            <a href="#" class="nav-links">Contact</a>
-        </nav>
-        <p class="text-footer">Site créé par Clara - 2026</p>
-    </footer>
     
+<?php require __DIR__ . "/../templates/footer.php" ; ?>
+
 </body>
 </html>
