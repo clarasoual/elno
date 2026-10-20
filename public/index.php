@@ -13,8 +13,7 @@
 <?php require __DIR__ . "/../templates/header.php" ; ?>
     <main>
         <section class="hero">
-            <img src="#" alt="Image Musiciens" class="img-hero">
-            <h1 class="h1-title">Bienvenue chez Elno !</h1>
+            <h1 class="h1-title">Bienvenue chez <span class="hero-name">Elno</span> !</h1>
             <a href="#" class="btn">Réserver</a>
         </section>
 

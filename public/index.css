@@ -44,3 +44,41 @@ body {
     color: var(--color-secondary);
     text-decoration: underline;
 }
+
+.hero {
+    min-height: 80vh;
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-name {
+    font-family: 'Pinyon Script', cursive;
+}
+
+.h1-title {
+    color: var(--color-background);
+    font-size: 2,5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--color-title);
+    background-color: transparent;
+    color: var(--color-title);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero .btn {
+    color: var(--color-background);
+    border-color: var(--color-background);
+}
+
+.btn:hover {
+    background-color: var(--color-title);
+    color: var(--color-background);
+}
