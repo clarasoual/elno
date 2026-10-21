@@ -6,14 +6,15 @@
     <title>Accueil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
 <?php require __DIR__ . "/../templates/header.php" ; ?>
     <main>
         <section class="hero">
-            <h1 class="h1-title">Bienvenue chez <span class="hero-name">Elno</span> !</h1>
+            <h1 class="h1-title"><span class="hero-name">Bienvenue</span></h1>
+            <p class="hero-subtitle"><em>Musiciens pour</em><br> mariages, cocktails, soirées</p>
             <a href="#" class="btn">Réserver</a>
         </section>
 
