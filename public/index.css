@@ -1,101 +1,7 @@
-:root {
-    --color-background : #F7EDD2;
-    --color-text : #310E10;
-    --color-title : #74070E;
-    --color-secondary : #45462A;
-    --color-border : #947268;
-}
-/*COMPOSANTS GLOBAUX*/
-
-body {
-    background-color: var(--color-background);
-    color : var(--color-text) ;
-    margin:0;
-    font-weight: 300;
-    font-family: 'Roboto Mono', Arial, sans-serif ;
-}
-.text {
-    max-width: 40rem;
-    margin: 2rem auto;
-    line-height: 1.6;
-}
-
-.h1-title {
-    color: var(--color-background);
-    font-size: 4.5rem;
-    font-weight: 200;
-    letter-spacing: 1.5px;
-    margin:0;
-}
-
-.h2-title {
-    color: var(--color-title);
-    font-size: 2rem;
-    font-family: 'Ballet', cursive;
-    text-align: center;
-    letter-spacing: 0.1rem;
-
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    border: 1px solid var(--color-title);
-    background-color: transparent;
-    color: var(--color-title);
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: var(--color-title);
-    color: var(--color-background);
-}
-
-/*HEADER*/
-
-
-.general-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-
-}
-
-.logo-img {
-    height: 4rem;
-}
-
-.nav {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-links {
-    text-decoration: none;
-    color: var(--color-title);
-    font-weight: 300;
-    letter-spacing: 1.6px;
-}
-
-.nav-links:hover {
-    color: var(--color-secondary);
-    text-decoration: underline;
-}
-
-.general-header .nav-links {
-    color: var(--color-background);
-}
-
 /* HERO */
 
 .hero {
-    min-height: 80vh;
+    min-height: 100svh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/elno33.jpg');
     background-size: cover;
     background-position: center 10%;
@@ -135,46 +41,15 @@ body {
     text-align: center;
 }
 
-/* FOOTER */
-
-.general-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 2rem;
-}
 /* RESPONSIVE */
 
 @media (max-width: 600px) {
-
-    .general-header {
-    flex-direction: column;
-    align-items: center;
-    }
-
-    .nav {
-        gap: 1rem;
-    }
-
-    .nav-links {
-        white-space: nowrap;
-    }
-
-    .logo-img {
-        height: 3rem;
-    }
 
     .hero {
         padding-bottom: 0;
         padding-top: 8rem;
         min-height: 100svh;
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/elno4.jpg');
-    }
-
-    .general-footer .nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
     }
 
 }

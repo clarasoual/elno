@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
+    <link href="global.css" rel="stylesheet">
 </head>
 <body>
 <?php require __DIR__ . "/../templates/header.php" ; ?>
