@@ -1,3 +1,14 @@
+.general-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.general-header .nav-links {
+    color: var(--color-background);
+}
+
 /* HERO */
 
 .hero {

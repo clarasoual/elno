@@ -60,10 +60,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
 
 }
 
@@ -88,9 +84,6 @@ body {
     text-decoration: underline;
 }
 
-.general-header .nav-links {
-    color: var(--color-background);
-}
 
 /* FOOTER */
 
