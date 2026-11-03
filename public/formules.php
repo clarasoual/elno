@@ -13,15 +13,15 @@
 <body>
 <?php require __DIR__ . "/../templates/header.php" ; ?>
 <main>
-    <h1>Nos formules</h1>
+    <h1 class="formulas-title">Nos formules</h1>
 
-    <article>
+    <article class="formula-card">
         <p>★</p>
         <h2 class="h2-title">Solo</h2>
         <img src="images/elno13.jpg" class="img-formulas" alt="image-solo">
         <p class="text">Dans la formule solo vous trouverez Nino, etc ...</p>
-        <div>
-            <p>À partir de 100 euros</p>
+        <div class="formula-bottom">
+            <p class="formula-price">À partir de 100 euros</p>
             <a href="#" class="btn">Réserver</a>
         </div>
     </article>
