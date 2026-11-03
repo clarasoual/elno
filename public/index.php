@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
     <link href="global.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
 </head>
 <body>
 <?php require __DIR__ . "/../templates/header.php" ; ?>
@@ -24,7 +24,7 @@
             <p class="text">Elno est un groupe de musique composé de 2 artistes, Elliott et Nino.</p>
             <a href="#" class="btn">En savoir +</a>
             <p class="text">Nos prestations sont sous forme de formules, il y en a 2 différentes pour l'instant.</p>
-            <a href="#" class="btn">Voir les formules</a>
+            <a href="formules.php" class="btn">Voir les formules</a>
         </section>
 
         <section class="socials">

@@ -45,6 +45,14 @@
     border-color: var(--color-background);
 }
 
+.logo-beige {
+    display: block;
+}
+
+.logo-rouge {
+    display: none;
+}
+
 /* SECTIONS */
 
 .presentation, .socials, .index-CTA {

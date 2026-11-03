@@ -67,6 +67,10 @@ body {
     height: 4rem;
 }
 
+.logo-beige {
+    display: none;
+}
+
 .nav {
     display: flex;
     gap: 2rem;
