@@ -1,3 +1,9 @@
+<?php
+require __DIR__ . '/../src/database.php' ; 
+$pdo = getPdo() ;
+$formulas = $pdo->query('SELECT id, name, description, price, sample_songs, photo, video FROM formulas ORDER BY id')->fetchAll() ;
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,29 +22,23 @@
     <h1 class="formulas-title">Nos formules</h1>
     <p class="text formula-subtitle">Vous pourrez choisir votre formules</p>
 
+    <?php
+    foreach ($formulas as $formula): ?>
+
     <article class="formula-card">
         <p>★</p>
-        <h2 class="h2-title">Solo</h2>
-        <img src="images/elno13.jpg" class="img-formulas" alt="image-solo">
-        <p class="text">Dans la formule solo vous trouverez Nino, etc ...</p>
+        <h2 class="h2-title"><?= $formula['name'] ?></h2>
+        <img src="<?= $formula['photo']?>" class="img-formulas" alt="Photo de la formule <?= $formula['name']?>">
+        <p class="text"><?= $formula['description'] ?></p>
         <div class="formula-bottom">
-            <p class="formula-price">À partir de 100 euros</p>
+            <p class="formula-price">À partir de <?= $formula['price'] ?></p>
             <a href="#" class="btn">Réserver</a>
         </div>
     </article>
 
-    <article class="formula-card">
-        <p>★★</p>
-        <h2 class="h2-title">Duo</h2>
-        <img src="images/elno17.jpg" class="img-formulas" alt="image-solo">
-        <p class="text">Dans la formule duo vous trouverez Nino avec Elliott, etc ...</p>
-        <div class="formula-bottom">
-            <p class="formula-price">À partir de 300 euros</p>
-            <a href="#" class="btn">Réserver</a>
-        </div>
-    </article>
-
+    <?php endforeach; ?>
 
 </main>
 <?php require __DIR__ . "/../templates/footer.php" ; ?>
 </body>
+</html>
