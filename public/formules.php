@@ -27,11 +27,11 @@ $formulas = $pdo->query('SELECT id, name, description, price, sample_songs, phot
 
     <article class="formula-card">
         <p>★</p>
-        <h2 class="h2-title"><?= $formula['name'] ?></h2>
-        <img src="<?= $formula['photo']?>" class="img-formulas" alt="Photo de la formule <?= $formula['name']?>">
-        <p class="text"><?= $formula['description'] ?></p>
+        <h2 class="h2-title"><?= htmlspecialchars($formula['name']) ?></h2>
+        <img src="<?= htmlspecialchars($formula['photo']) ?>" class="img-formulas" alt="Photo de la formule <?= htmlspecialchars($formula['name']) ?>">
+        <p class="text"><?= htmlspecialchars($formula['description']) ?></p>
         <div class="formula-bottom">
-            <p class="formula-price">À partir de <?= $formula['price'] ?></p>
+            <p class="formula-price">À partir de <?= htmlspecialchars($formula['price']) ?></p>
             <a href="#" class="btn">Réserver</a>
         </div>
     </article>
