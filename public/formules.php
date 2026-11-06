@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../src/database.php' ; 
 $pdo = getPdo() ;
-$formulas = $pdo->query('SELECT id, name, description, price, sample_songs, photo, video FROM formulas ORDER BY id')->fetchAll() ;
+$formulas = $pdo->query('SELECT id, name, description, price, photo, video FROM formulas ORDER BY id')->fetchAll() ;
 ?>
 
 <!DOCTYPE html>
