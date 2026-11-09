@@ -1,3 +1,9 @@
+<?php
+require __DIR__ . '/../src/database.php' ; 
+$pdo = getPdo() ;
+$formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll() ;
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +20,41 @@
 <?php require __DIR__ . "/../templates/header.php" ; ?>
 <main>
     <h1 class="booking-h1">Votre demande de réservation</h1>
+    <form action="booking.php" method="post" class="booking-form">
+        <fieldset>
+            <legend>Vous êtes</legend>
+
+            <label>
+                <input type="radio" name="client_type" value="particulier" required>
+                Particulier
+            </label>
+            <label>
+                <input type="radio" name="client_type" value="professionnel" required>
+                Professionnel
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Votre événement</legend>
+
+            <label for="formula">Formule</label>
+            <select id="formula" name="formula_id" required>
+                <option value="">Choisissez votre formule</option>
+                <?php
+                foreach ($formulas as $formula): ?>
+                <option value="<?= htmlspecialchars($formula['id']) ?>"><?= htmlspecialchars($formula['name']) ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <label for="duration">Durée de la prestation</label>
+            <select id="duration" name="prestation_duration" required>
+                <option value="">Choisissez une durée</option>
+                <option value="1">1 heure</option>
+                <option value="2">2 heures</option>
+                <option value="3">3 heures</option>
+                <option value="4">4 heures ou plus</option>
+            </select>
+        </fieldset>
+    </form>
 
 
 
