@@ -53,6 +53,9 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <option value="3">3 heures</option>
                 <option value="4">4 heures ou plus</option>
             </select>
+
+            <label for="event-date">Date de l'événement</label>
+            <input type="date" id="event-date" name="event_date" min="<?= date('Y-m-d') ?>" required>
         </fieldset>
     </form>
 
