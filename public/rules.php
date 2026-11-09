@@ -49,6 +49,15 @@
 
 </div>
 
+<form action="booking.php" method="get" class="rules-form">
+    <label for="accept-rules">
+        <input type="checkbox" id="accept-rules" name="accept_rules" required>
+        J'ai lu et j'accepte le règlement.
+    </label>
+
+    <button type="submit" class="btn">Passer au formulaire.</button>
+</form>
+
 </main>
 <?php require __DIR__ . "/../templates/footer.php" ; ?>
 </body>

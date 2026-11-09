@@ -63,3 +63,15 @@ main {
     max-width: 50rem;
     margin: 0 auto;
 }
+
+.rules-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 4rem auto;
+}
+
+.rules-form input[type="checkbox"] {
+    accent-color: var(--color-title);
+}
