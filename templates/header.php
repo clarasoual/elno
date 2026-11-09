@@ -4,6 +4,6 @@
         <nav class="nav">
             <a href="#" class="nav-links">À propos</a>
             <a href="../public/formules.php" class="nav-links">Formules</a>
-            <a href="#" class="nav-links">Réserver</a>
+            <a href="../public/rules.php" class="nav-links">Réserver</a>
         </nav>
     </header>
