@@ -48,7 +48,7 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
             <label for="duration">Durée de la prestation</label>
             <select id="duration" name="prestation_duration" required>
                 <option value="">Choisissez une durée</option>
-                <option value="moins_1">Moins d'1 heure</option>
+                <option value="moins_1h">Moins d'1 heure</option>
                 <option value="1h_2h">Entre 1 et 2 heures</option>
                 <option value="2h_3h">Entre 2 et 3 heures</option>
                 <option value="plus_3h">Plus de 3 heures</option>
@@ -56,6 +56,22 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
 
             <label for="event-date">Date de l'événement</label>
             <input type="date" id="event-date" name="event_date" min="<?= date('Y-m-d') ?>" required>
+
+            <label for="event-location">Adresse exacte du lieu</label>
+            <input type="text" id="event-location" name="event_location" maxlength="300" required>
+            <p class="booking-hint">Max. 150 km de Bordeaux. Elno a besoin de l'adresse pour calculer les frais de déplacement.</p>
+
+            <label for="event-type">Type d'événement</label>
+            <select id="event-type" name="event_type" required>
+                <option value="">Choisissez votre type d'événement</option>
+                <option value="mariage">Mariage</option>
+                <option value="repas_entreprise">Repas d'entreprise</option>
+                <option value="soiree_privee">Soirée privée</option>
+                <option value="bar_guinguette">Bar ou guinguette</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="association">Association</option>
+                <option value="autre">Autre (précisez dans la description)</option>
+            </select>
         </fieldset>
     </form>
 
