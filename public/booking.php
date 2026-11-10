@@ -48,10 +48,10 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
             <label for="duration">Durée de la prestation</label>
             <select id="duration" name="prestation_duration" required>
                 <option value="">Choisissez une durée</option>
-                <option value="1">1 heure</option>
-                <option value="2">2 heures</option>
-                <option value="3">3 heures</option>
-                <option value="4">4 heures ou plus</option>
+                <option value="moins_1">Moins d'1 heure</option>
+                <option value="1h_2h">Entre 1 et 2 heures</option>
+                <option value="2h_3h">Entre 2 et 3 heures</option>
+                <option value="plus_3h">Plus de 3 heures</option>
             </select>
 
             <label for="event-date">Date de l'événement</label>
