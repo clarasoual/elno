@@ -22,7 +22,7 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
     <h1 class="booking-h1">Votre demande de réservation</h1>
     <form action="booking.php" method="post" class="booking-form">
         <fieldset>
-            <legend>Vous êtes</legend>
+            <legend>Vous</legend>
 
             <label>
                 <input type="radio" name="client_type" value="particulier" required>
@@ -32,6 +32,21 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <input type="radio" name="client_type" value="professionnel" required>
                 Professionnel
             </label>
+
+            <label for="first-name">Votre prénom</label>
+            <input id="first-name" name="first_name" maxlength="50" autocomplete="given-name" required>
+
+            <label for="last-name">Votre nom</label>
+            <input id="last-name" name="last_name" maxlength="50" autocomplete="family-name" required>
+
+            <label for="email">Votre adresse mail</label>
+            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" required>
+
+            <label for="phone-number">Votre n° de téléphone</label>
+            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" required>
+
+            <label for="address">Votre adresse de facturation</label>
+            <input id="address" name="address" maxlength="300" autocomplete="street-address" required>
         </fieldset>
         <fieldset>
             <legend>Votre événement</legend>
@@ -72,7 +87,13 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <option value="association">Association</option>
                 <option value="autre">Autre (précisez dans la description)</option>
             </select>
+
+            <label for="event-description">Décrivez votre événement</label>
+            <textarea id="event-description" name="event_description" rows="6" required></textarea>
+            <p class="booking-hint">Ce que vous recherchez, l'ambiance souhaitée, le nombre d'invités ... Si vous réservez pour une entreprise, présentez-la ici.</p>
         </fieldset>
+
+        <button type="submit" class="btn">Envoyer votre demande</button>
     </form>
 
 
