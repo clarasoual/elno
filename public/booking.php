@@ -24,6 +24,7 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
         <fieldset>
             <legend>Vous</legend>
 
+            <div class="booking-field booking-field-full">
             <label>
                 <input type="radio" name="client_type" value="particulier" required>
                 Particulier
@@ -32,25 +33,37 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <input type="radio" name="client_type" value="professionnel" required>
                 Professionnel
             </label>
+            </div>
 
+            <div class="booking-field">
             <label for="first-name">Votre prénom</label>
             <input id="first-name" name="first_name" maxlength="50" autocomplete="given-name" required>
+            </div>
 
+            <div class="booking-field">
             <label for="last-name">Votre nom</label>
             <input id="last-name" name="last_name" maxlength="50" autocomplete="family-name" required>
+            </div>
 
+            <div class="booking-field">
             <label for="email">Votre adresse mail</label>
             <input id="email" name="email" maxlength="100" autocomplete="email" type="email" required>
+            </div>
 
+            <div class="booking-field">
             <label for="phone-number">Votre n° de téléphone</label>
             <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" required>
+            </div>
 
+            <div class="booking-field booking-field-full">
             <label for="address">Votre adresse de facturation</label>
             <input id="address" name="address" maxlength="300" autocomplete="street-address" required>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Votre événement</legend>
 
+            <div class="booking-field">
             <label for="formula">Formule</label>
             <select id="formula" name="formula_id" required>
                 <option value="">Choisissez votre formule</option>
@@ -59,7 +72,9 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <option value="<?= htmlspecialchars($formula['id']) ?>"><?= htmlspecialchars($formula['name']) ?></option>
                 <?php endforeach; ?>
             </select>
+            </div>
 
+            <div class="booking-field">
             <label for="duration">Durée de la prestation</label>
             <select id="duration" name="prestation_duration" required>
                 <option value="">Choisissez une durée</option>
@@ -68,14 +83,14 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <option value="2h_3h">Entre 2 et 3 heures</option>
                 <option value="plus_3h">Plus de 3 heures</option>
             </select>
+            </div>
 
+            <div class="booking-field">
             <label for="event-date">Date de l'événement</label>
             <input type="date" id="event-date" name="event_date" min="<?= date('Y-m-d') ?>" required>
+            </div>
 
-            <label for="event-location">Adresse exacte du lieu</label>
-            <input type="text" id="event-location" name="event_location" maxlength="300" required>
-            <p class="booking-hint">Max. 150 km de Bordeaux. Elno a besoin de l'adresse pour calculer les frais de déplacement.</p>
-
+            <div class="booking-field">
             <label for="event-type">Type d'événement</label>
             <select id="event-type" name="event_type" required>
                 <option value="">Choisissez votre type d'événement</option>
@@ -87,10 +102,19 @@ $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll()
                 <option value="association">Association</option>
                 <option value="autre">Autre (précisez dans la description)</option>
             </select>
+            </div>
 
+            <div class="booking-field booking-field-full">
+            <label for="event-location">Adresse exacte du lieu</label>
+            <input type="text" id="event-location" name="event_location" maxlength="300" required>
+            <p class="booking-hint">Max. 150 km de Bordeaux. Elno a besoin de l'adresse pour calculer les frais de déplacement.</p>
+            </div>
+
+            <div class="booking-field booking-field-full">
             <label for="event-description">Décrivez votre événement</label>
             <textarea id="event-description" name="event_description" rows="6" required></textarea>
             <p class="booking-hint">Ce que vous recherchez, l'ambiance souhaitée, le nombre d'invités ... Si vous réservez pour une entreprise, présentez-la ici.</p>
+            </div>
         </fieldset>
 
         <button type="submit" class="btn">Envoyer votre demande</button>
