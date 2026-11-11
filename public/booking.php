@@ -2,6 +2,55 @@
 require __DIR__ . '/../src/database.php' ; 
 $pdo = getPdo() ;
 $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll() ;
+$errors = [] ;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $firstName = trim($_POST['first_name'] ?? '') ;
+
+    if ($firstName === '') {
+        $errors['first_name'] = 'Indiquez votre prénom.' ;
+    }
+
+    $lastName = trim($_POST['last_name'] ?? '') ;
+
+    if ($lastName === '') {
+        $errors['last_name'] = 'Indiquez votre nom.' ;
+    } 
+
+    $email = trim($_POST['email'] ?? '') ;
+
+    if ($email === '') {
+        $errors['email'] = 'Indiquez votre adresse mail.' ;
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = 'Cette adresse mail n\'est pas valide.' ;
+    }
+
+    $phoneNumber = trim($_POST['phone_number'] ?? '') ;
+
+    if ( $phoneNumber === '') {
+        $errors['phone_number'] = 'Indiquez votre numéro de téléphone.' ;
+    } 
+
+    $address = trim($_POST['address'] ?? '') ;
+
+    if ($address === '') {
+        $errors['address'] = 'Indiquez votre adresse de facturation.' ;
+    } 
+
+    $eventLocation = trim($_POST['event_location'] ?? '') ;
+
+    if ($eventLocation === '') {
+        $errors['event_location'] = 'Indiquez l\'adresse du lieu.' ;
+    } 
+        
+    $eventDescription = trim($_POST['event_description'] ?? '') ;
+
+    if ($eventDescription === '') {
+        $errors['event_description'] = 'Décrivez votre événement.' ;
+    } 
+
+    var_dump($errors) ;
+}
 ?>
 
 <!DOCTYPE html>
