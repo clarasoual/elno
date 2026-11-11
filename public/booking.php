@@ -68,7 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $formulaId = (int) ($_POST['formula_id'] ?? 0) ;
-    $formulaIds = (!array_column($formulaId, $formulaIds, true)) {
+    $formulaIds = array_column($formulas,'id') ;
+
+    if (!in_array($formulaId, $formulaIds, true)) {
         $errors['formula_id'] = 'Choisissez une formule.' ;
     }
 
@@ -96,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <fieldset>
             <legend>Vous</legend>
 
-            <div class="booking-field booking-field-full">
+            <div class="booking-field booking-field-full booking-choice">
             <label>
                 <input type="radio" name="client_type" value="particulier" required>
                 Particulier
@@ -109,27 +111,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="first-name">Votre prénom</label>
-            <input id="first-name" name="first_name" maxlength="50" autocomplete="given-name" required>
+            <input id="first-name" name="first_name" maxlength="50" autocomplete="given-name" placeholder="Ex : Jeanne" required>
             </div>
 
             <div class="booking-field">
             <label for="last-name">Votre nom</label>
-            <input id="last-name" name="last_name" maxlength="50" autocomplete="family-name" required>
+            <input id="last-name" name="last_name" maxlength="50" autocomplete="family-name" placeholder="Ex : Dupont" required>
             </div>
 
             <div class="booking-field">
             <label for="email">Votre adresse mail</label>
-            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" required>
+            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" placeholder="Ex : email@elno.fr" required>
             </div>
 
             <div class="booking-field">
             <label for="phone-number">Votre n° de téléphone</label>
-            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" required>
+            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" placeholder="Ex : 012345678" required>
             </div>
 
             <div class="booking-field booking-field-full">
             <label for="address">Votre adresse de facturation</label>
-            <input id="address" name="address" maxlength="300" autocomplete="street-address" required>
+            <input id="address" name="address" maxlength="300" autocomplete="street-address" placeholder="Ex : 1 place de la bourse, 33000, Bordeaux" required>
             </div>
         </fieldset>
         <fieldset>
@@ -178,18 +180,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field booking-field-full">
             <label for="event-location">Adresse exacte du lieu</label>
-            <input type="text" id="event-location" name="event_location" maxlength="300" required>
+            <input type="text" id="event-location" name="event_location" maxlength="300" placeholder="Ex : 3 rue Sainte Catherine, 33000, Bordeaux" required>
             <p class="booking-hint">Max. 150 km de Bordeaux. Elno a besoin de l'adresse pour calculer les frais de déplacement.</p>
             </div>
 
             <div class="booking-field booking-field-full">
             <label for="event-description">Décrivez votre événement</label>
-            <textarea id="event-description" name="event_description" rows="6" required></textarea>
+            <textarea id="event-description" name="event_description" rows="6" placeholder="Ex : je souhaite faire une surprise à ma femme pour notre anniversaire de mariage, ..." required></textarea>
             <p class="booking-hint">Ce que vous recherchez, l'ambiance souhaitée, le nombre d'invités ... Si vous réservez pour une entreprise, présentez-la ici.</p>
             </div>
         </fieldset>
 
-        <button type="submit" class="btn">Envoyer votre demande</button>
+        <button type="submit" class="btn booking-submit">Envoyer votre demande</button>
     </form>
 
 

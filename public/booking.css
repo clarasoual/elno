@@ -19,10 +19,10 @@ main {
 .booking-form fieldset {
     display: grid;
     grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 0.5rem;
+    gap: 2rem 1.5rem;
     border: 1px solid var(--color-secondary);
     box-shadow: 6px 6px 0 var(--color-secondary);
-    padding: 1.5rem 2rem 2rem;
+    padding: 0.5rem 2rem 2rem;
     margin: 0 0 3rem;
     min-width: 0;
 }
@@ -31,10 +31,12 @@ main {
 .booking-form select,
 .booking-form textarea {
     font: inherit;
+    font-size: 0.9rem;
     color: var(--color-text);
     background-color: transparent;
-    border: 1px solid var(--color-border);
-    padding: 0.6rem 0.75rem;
+    border: none;
+    border-bottom: 1px solid var(--color-secondary);
+    padding: 0.6rem 0;
     width: 100%;
     box-sizing: border-box;
 }
@@ -52,6 +54,20 @@ main {
     padding: 0 0.5rem;
 }
 
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    outline: none;
+    border-color: var(--color-title);
+    box-shadow: 0 1px 0 var(--color-secondary);
+}
+
+.booking-hint {
+    font-size: 0.75rem;
+    font-style: italic;
+    margin: 0;
+}
+
 .booking-field {
     display: flex;
     flex-direction: column;
@@ -60,6 +76,33 @@ main {
 
 .booking-field-full {
     grid-column: 1 / -1;
+}
+
+.booking-field label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.booking-choice {
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.booking-form button {
+    display: block;
+    margin: 0 auto;
+}
+
+.booking-submit {
+    border-color: var(--color-secondary);
+    box-shadow: 5px 5px 0 var(--color-secondary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.booking-submit:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--color-secondary);
 }
 
 @media (max-width: 600px) {
