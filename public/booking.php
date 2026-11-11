@@ -67,6 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['event_type'] = 'Indiquez le type d\'événement.' ;
     }
 
+    $formulaId = (int) ($_POST['formula_id'] ?? 0) ;
+    $formulaIds = (!array_column($formulaId, $formulaIds, true)) {
+        $errors['formula_id'] = 'Choisissez une formule.' ;
+    }
+
     var_dump($errors) ;
 }
 ?>
