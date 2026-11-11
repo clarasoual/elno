@@ -39,6 +39,7 @@ main {
     padding: 0.6rem 0;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 0;
 }
 
 .booking-form input[type="radio"] {
@@ -87,6 +88,13 @@ main {
 .booking-choice {
     flex-direction: row;
     gap: 2rem;
+}
+
+.booking-choice label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
 }
 
 .booking-form button {
