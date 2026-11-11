@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $phoneNumber = trim($_POST['phone_number'] ?? '') ;
 
-    if ( $phoneNumber === '') {
+    if ($phoneNumber === '') {
         $errors['phone_number'] = 'Indiquez votre numéro de téléphone.' ;
     } 
 
@@ -48,6 +48,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($eventDescription === '') {
         $errors['event_description'] = 'Décrivez votre événement.' ;
     } 
+
+    $clientType = $_POST['client_type'] ?? '' ;
+
+    if (!in_array($clientType, ['particulier', 'professionnel'], true)) {
+        $errors['client_type'] = 'Indiquez si vous êtes un particulier ou un professionnel.' ;
+    }
+
+    $prestationDuration = $_POST['prestation_duration'] ?? '' ;
+
+    if (!in_array($prestationDuration, ['moins_1h', '1h_2h', '2h_3h', 'plus_3h'], true)) {
+        $errors['prestation_duration'] = 'Indiquez la durée souhaitée de la prestation.' ;
+    }
+
+    $eventType = $_POST['event_type'] ?? '' ;
+
+    if (!in_array($eventType, ['mariage', 'repas_entreprise', 'soiree_privee', 'bar_guinguette', 'restaurant', 'association', 'autre'], true)) {
+        $errors['event_type'] = 'Indiquez le type d\'événement.' ;
+    }
 
     var_dump($errors) ;
 }
