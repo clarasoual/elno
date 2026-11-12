@@ -141,12 +141,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="email">Votre adresse mail</label>
-            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" placeholder="Ex : email@elno.fr" required>
+            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" placeholder="Ex : jeanne.dupont@mail.fr" required>
             </div>
 
             <div class="booking-field">
             <label for="phone-number">Votre n° de téléphone</label>
-            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" placeholder="Ex : 012345678" required>
+            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" placeholder="Ex : 0123456789" required>
             </div>
 
             <div class="booking-field booking-field-full">
