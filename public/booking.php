@@ -9,39 +9,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($firstName === '') {
         $errors['first_name'] = 'Indiquez votre prénom.' ;
+    } elseif (mb_strlen($firstName) > 50) {
+        $errors['first_name'] = 'Votre prénom ne doit pas dépasser 50 caractères.' ;
     }
 
     $lastName = trim($_POST['last_name'] ?? '') ;
 
     if ($lastName === '') {
         $errors['last_name'] = 'Indiquez votre nom.' ;
-    } 
+    } elseif (mb_strlen($lastName) > 50) {
+        $errors['last_name'] = 'Votre nom ne doit pas dépasser 50 caractères.' ;
+    }
 
     $email = trim($_POST['email'] ?? '') ;
 
     if ($email === '') {
         $errors['email'] = 'Indiquez votre adresse mail.' ;
+    } elseif (mb_strlen($email) > 100) {
+        $errors['email'] = 'Votre adresse mail ne doit pas dépasser 100 caractères.' ;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = 'Cette adresse mail n\'est pas valide.' ;
-    }
+    } 
 
     $phoneNumber = trim($_POST['phone_number'] ?? '') ;
 
     if ($phoneNumber === '') {
         $errors['phone_number'] = 'Indiquez votre numéro de téléphone.' ;
-    } 
+    } elseif (mb_strlen($phoneNumber) > 20) {
+        $errors['phone_number'] = 'Votre numéro de téléphone ne doit pas dépasser 20 caractères.' ;
+    }
 
     $address = trim($_POST['address'] ?? '') ;
 
     if ($address === '') {
         $errors['address'] = 'Indiquez votre adresse de facturation.' ;
-    } 
+    } elseif (mb_strlen($address) > 300) {
+        $errors['address'] = 'Votre adresse de facturation ne doit pas dépasser 300 caractères.' ;
+    }
 
     $eventLocation = trim($_POST['event_location'] ?? '') ;
 
     if ($eventLocation === '') {
         $errors['event_location'] = 'Indiquez l\'adresse du lieu.' ;
-    } 
+    } elseif (mb_strlen($eventLocation) > 300) {
+        $errors['event_location'] = 'L\'adresse du lieu ne doit pas dépasser 300 caractères.' ;
+    }
         
     $eventDescription = trim($_POST['event_description'] ?? '') ;
 
