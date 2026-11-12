@@ -74,6 +74,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['formula_id'] = 'Choisissez une formule.' ;
     }
 
+    $eventDate = $_POST['event_date'] ?? '';
+    $date = DateTime::createFromFormat('Y-m-d', $eventDate) ;
+
+    if (!$date || $date->format('Y-m-d') !== $eventDate) {
+        $errors['event_date'] = 'Indiquez une date valide.' ;
+    } elseif ($eventDate < date('Y-m-d')) {
+        $errors['event_date'] = 'La date ne peut pas être passée.' ;
+    }
     var_dump($errors) ;
 }
 ?>
