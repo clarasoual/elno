@@ -120,11 +120,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field booking-field-full booking-choice">
             <label>
-                <input type="radio" name="client_type" value="particulier" required>
+                <input type="radio" name="client_type" value="particulier" <?= ($clientType ?? '')=== 'particulier' ? 'checked' : ''  ?> required>
                 Particulier
             </label>
             <label>
-                <input type="radio" name="client_type" value="professionnel" required>
+                <input type="radio" name="client_type" value="professionnel" <?= ($clientType ?? '')=== 'professionnel' ? 'checked' : ''  ?> required>
                 Professionnel
             </label>
 
@@ -188,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="">Choisissez votre formule</option>
                 <?php
                 foreach ($formulas as $formula): ?>
-                <option value="<?= htmlspecialchars($formula['id']) ?>"><?= htmlspecialchars($formula['name']) ?></option>
+                <option value="<?= htmlspecialchars($formula['id']) ?>" <?= ($formulaId ?? 0) === $formula['id'] ? 'selected' : '' ?>><?= htmlspecialchars($formula['name']) ?></option>
                 <?php endforeach; ?>
             </select>
             
@@ -201,10 +201,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="duration">Durée de la prestation</label>
             <select id="duration" name="prestation_duration" required>
                 <option value="">Choisissez une durée</option>
-                <option value="moins_1h">Moins d'1 heure</option>
-                <option value="1h_2h">Entre 1 et 2 heures</option>
-                <option value="2h_3h">Entre 2 et 3 heures</option>
-                <option value="plus_3h">Plus de 3 heures</option>
+                <option value="moins_1h" <?= ($prestationDuration ?? '') === 'moins_1h' ? 'selected' : '' ?>>Moins d'1 heure</option>
+                <option value="1h_2h" <?= ($prestationDuration ?? '') === '1h_2h' ? 'selected' : '' ?>>Entre 1 et 2 heures</option>
+                <option value="2h_3h" <?= ($prestationDuration ?? '') === '2h_3h' ? 'selected' : '' ?>>Entre 2 et 3 heures</option>
+                <option value="plus_3h" <?= ($prestationDuration ?? '') === 'plus_3h' ? 'selected' : '' ?>>Plus de 3 heures</option>
             </select>
             
             <?php if (isset($errors['prestation_duration'])) : ?>
@@ -225,13 +225,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="event-type">Type d'événement</label>
             <select id="event-type" name="event_type" required>
                 <option value="">Choisissez votre type d'événement</option>
-                <option value="mariage">Mariage</option>
-                <option value="repas_entreprise">Repas d'entreprise</option>
-                <option value="soiree_privee">Soirée privée</option>
-                <option value="bar_guinguette">Bar ou guinguette</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="association">Association</option>
-                <option value="autre">Autre (précisez dans la description)</option>
+                <option value="mariage" <?= ($eventType ?? '') === 'mariage' ? 'selected' : '' ?>>Mariage</option>
+                <option value="repas_entreprise" <?= ($eventType ?? '') === 'repas_entreprise' ? 'selected' : '' ?>>Repas d'entreprise</option>
+                <option value="soiree_privee" <?= ($eventType ?? '') === 'soiree_privee' ? 'selected' : '' ?>>Soirée privée</option>
+                <option value="bar_guinguette" <?= ($eventType ?? '') === 'bar_guinguette' ? 'selected' : '' ?>>Bar ou guinguette</option>
+                <option value="restaurant" <?= ($eventType ?? '') === 'restaurant' ? 'selected' : '' ?>>Restaurant</option>
+                <option value="association" <?= ($eventType ?? '') === 'association' ? 'selected' : '' ?>>Association</option>
+                <option value="autre" <?= ($eventType ?? '') === 'autre' ? 'selected' : '' ?>>Autre (précisez dans la description)</option>
             </select>
             
             <?php if (isset($errors['event_type'])) : ?>
