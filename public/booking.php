@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="first-name">Votre prénom</label>
-            <input id="first-name" name="first_name" maxlength="50" autocomplete="given-name" placeholder="Ex : Jeanne" required>
+            <input id="first-name" name="first_name" maxlength="50" autocomplete="given-name" placeholder="Ex : Jeanne" value="<?= htmlspecialchars($firstName ?? '') ?>" required>
 
             <?php if (isset($errors['first_name'])) : ?>
                 <p class="booking-error"><?= htmlspecialchars($errors['first_name']) ?></p>
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="last-name">Votre nom</label>
-            <input id="last-name" name="last_name" maxlength="50" autocomplete="family-name" placeholder="Ex : Dupont" required>
+            <input id="last-name" name="last_name" maxlength="50" autocomplete="family-name" placeholder="Ex : Dupont" value="<?= htmlspecialchars($lastName ?? '') ?>" required>
             
             <?php if (isset($errors['last_name'])) : ?>
                 <p class="booking-error"><?= htmlspecialchars($errors['last_name']) ?></p>
@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="email">Votre adresse mail</label>
-            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" placeholder="Ex : jeanne.dupont@mail.fr" required>
+            <input id="email" name="email" maxlength="100" autocomplete="email" type="email" placeholder="Ex : jeanne.dupont@mail.fr" value="<?= htmlspecialchars($email ?? '') ?>" required>
             
             <?php if (isset($errors['email'])) : ?>
                 <p class="booking-error"><?= htmlspecialchars($errors['email']) ?></p>
@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="phone-number">Votre n° de téléphone</label>
-            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" placeholder="Ex : 0123456789" required>
+            <input id="phone-number" name="phone_number" type="tel" maxlength="20" autocomplete="tel" placeholder="Ex : 0123456789" value="<?= htmlspecialchars($phoneNumber ?? '') ?>" required>
             
             <?php if (isset($errors['phone_number'])) : ?>
                 <p class="booking-error"><?= htmlspecialchars($errors['phone_number']) ?></p>
@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field booking-field-full">
             <label for="address">Votre adresse de facturation</label>
-            <input id="address" name="address" maxlength="300" autocomplete="street-address" placeholder="Ex : 1 place de la bourse, 33000, Bordeaux" required>
+            <input id="address" name="address" maxlength="300" autocomplete="street-address" placeholder="Ex : 1 place de la bourse, 33000, Bordeaux" value="<?= htmlspecialchars($address ?? '') ?>" required>
             
             <?php if (isset($errors['address'])) : ?>
                 <p class="booking-error"><?= htmlspecialchars($errors['address']) ?></p>
@@ -214,7 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field">
             <label for="event-date">Date de l'événement</label>
-            <input type="date" id="event-date" name="event_date" min="<?= date('Y-m-d') ?>" required>
+            <input type="date" id="event-date" name="event_date" min="<?= date('Y-m-d') ?>" value="<?= htmlspecialchars($eventDate ?? '') ?>" required>
             
             <?php if (isset($errors['event_date'])) : ?>
                 <p class="booking-error"><?= htmlspecialchars($errors['event_date']) ?></p>
@@ -241,7 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field booking-field-full">
             <label for="event-location">Adresse exacte du lieu</label>
-            <input type="text" id="event-location" name="event_location" maxlength="300" placeholder="Ex : 3 rue Sainte Catherine, 33000, Bordeaux" required>
+            <input type="text" id="event-location" name="event_location" maxlength="300" placeholder="Ex : 3 rue Sainte Catherine, 33000, Bordeaux" value="<?= htmlspecialchars($eventLocation ?? '') ?>" required>
             <p class="booking-hint">Max. 150 km de Bordeaux. Elno a besoin de l'adresse pour calculer les frais de déplacement.</p>
             
             <?php if (isset($errors['event_location'])) : ?>
@@ -251,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="booking-field booking-field-full">
             <label for="event-description">Décrivez votre événement</label>
-            <textarea id="event-description" name="event_description" rows="6" placeholder="Ex : je souhaite faire une surprise à ma femme pour notre anniversaire de mariage, ..." required></textarea>
+            <textarea id="event-description" name="event_description" rows="6" placeholder="Ex : je souhaite faire une surprise à ma femme pour notre anniversaire de mariage, ..." required><?= htmlspecialchars($eventDescription ?? '') ?></textarea>
             <p class="booking-hint">Ce que vous recherchez, l'ambiance souhaitée, le nombre d'invités ... Si vous réservez pour une entreprise, présentez-la ici.</p>
             
             <?php if (isset($errors['event_description'])) : ?>
