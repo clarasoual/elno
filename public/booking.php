@@ -141,7 +141,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1 class="booking-h1">Votre demande de réservation</h1>
 
     <?php if (isset($_GET['success'])): ?>
-        <p>Merci, votre demande a bien été envoyée.Vous recevrez un mail de confirmation sous peu. Elno vous recontactera sous 72h. </p>
+        <div class="booking-success">
+        <h2 class="h2-title">Merci !</h2>
+        <p>Merci, votre demande a bien été envoyée. Vous recevrez un mail de confirmation sous peu. Elno vous recontactera sous 72h. </p>
+        </div>
     <?php else: ?>
     <form action="booking.php" method="post" class="booking-form">
         <fieldset>
