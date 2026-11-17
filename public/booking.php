@@ -94,8 +94,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($eventDate < date('Y-m-d')) {
         $errors['event_date'] = 'La date ne peut pas être passée.' ;
     }
-    var_dump($errors) ;
-}
+    if (empty($errors)) {
+        $insert = $pdo->prepare('
+        INSERT INTO reservations
+            (client_type, first_name, last_name, email, phone_number, address, formula_id, prestation_duration, event_date, event_type, event_location, event_description, rules_accepted_at)
+        VALUES
+            (:client_type, :first_name, :last_name, :email, :phone_number, :address, :formula_id, :prestation_duration, :event_date, :event_type, :event_location, :event_description, NOW())
+        ');
+
+        $insert->execute([
+            'client_type' => $clientType,
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $email,
+            'phone_number' => $phoneNumber,
+            'address' => $address,
+            'formula_id' => $formulaId,
+            'prestation_duration' => $prestationDuration,
+            'event_date' => $eventDate,
+            'event_type' => $eventType,
+            'event_location' => $eventLocation,
+            'event_description' => $eventDescription,
+        ]);
+    }
+    }
 ?>
 
 <!DOCTYPE html>
