@@ -3,6 +3,14 @@ require __DIR__ . '/../src/database.php' ;
 $pdo = getPdo() ;
 $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll() ;
 $errors = [] ;
+
+$acceptRules = $_GET['accept_rules'] ?? $_POST['accept_rules'] ?? '' ;
+
+if ($acceptRules !== 'on' && !isset($_GET['success'])) {
+    header('Location: rules.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $firstName = trim($_POST['first_name'] ?? '') ;
