@@ -116,6 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'event_location' => $eventLocation,
             'event_description' => $eventDescription,
         ]);
+        
+        header('Location: booking.php?success=1') ;
+        exit;
     }
     }
 ?>
