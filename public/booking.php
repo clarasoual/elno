@@ -139,6 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php require __DIR__ . "/../templates/header.php" ; ?>
 <main>
     <h1 class="booking-h1">Votre demande de réservation</h1>
+
+    <?php if (isset($_GET['success'])): ?>
+        <p>Merci, votre demande a bien été envoyée.Vous recevrez un mail de confirmation sous peu. Elno vous recontactera sous 72h. </p>
+    <?php else: ?>
     <form action="booking.php" method="post" class="booking-form">
         <fieldset>
             <legend>Vous</legend>
@@ -287,6 +291,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit" class="btn booking-submit">Envoyer votre demande</button>
     </form>
+    <?php endif; ?>
 
 
 
