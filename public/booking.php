@@ -103,14 +103,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['event_date'] = 'La date ne peut pas être passée.' ;
     }
     if (empty($errors)) {
+        do {
+            $reservationNumber = 'ELNO-' . date('Y') . '-' . str_pad(random_int(0,9999), 4, '0', STR_PAD_LEFT) ;
+
+            $check = $pdo->prepare('SELECT COUNT(*) FROM reservations WHERE reservation_number = :number');
+            $check->execute(['number' => $reservationNumber]);
+        } while ($check->fetchColumn() > 0);
+    
         $insert = $pdo->prepare('
         INSERT INTO reservations
-            (client_type, first_name, last_name, email, phone_number, address, formula_id, prestation_duration, event_date, event_type, event_location, event_description, rules_accepted_at)
+            (reservation_number, client_type, first_name, last_name, email, phone_number, address, formula_id, prestation_duration, event_date, event_type, event_location, event_description, rules_accepted_at)
         VALUES
-            (:client_type, :first_name, :last_name, :email, :phone_number, :address, :formula_id, :prestation_duration, :event_date, :event_type, :event_location, :event_description, NOW())
+            (:reservation_number, :client_type, :first_name, :last_name, :email, :phone_number, :address, :formula_id, :prestation_duration, :event_date, :event_type, :event_location, :event_description, NOW())
         ');
 
         $insert->execute([
+            'reservation_number' => $reservationNumber,
             'client_type' => $clientType,
             'first_name' => $firstName,
             'last_name' => $lastName,
@@ -125,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'event_description' => $eventDescription,
         ]);
         
-        header('Location: booking.php?success=1') ;
+        header('Location: booking.php?success=1&number=' . urlencode($reservationNumber)) ;
         exit;
     }
     }
@@ -152,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="booking-success">
         <h2 class="h2-title">Merci !</h2>
         <p>Merci, votre demande a bien été envoyée. Vous recevrez un mail de confirmation sous peu. Elno vous recontactera sous 72h. </p>
+        <p>Votre numéro de demande : <strong><?= htmlspecialchars($_GET['number'] ?? '') ?></strong></p>
         </div>
     <?php else: ?>
     <form action="booking.php" method="post" class="booking-form">
