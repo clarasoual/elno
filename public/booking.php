@@ -155,6 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <?php else: ?>
     <form action="booking.php" method="post" class="booking-form">
+        <input type="hidden" name="accept_rules" value="on">
         <fieldset>
             <legend>Vous</legend>
 
