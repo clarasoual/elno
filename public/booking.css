@@ -1,0 +1,143 @@
+main {
+    padding: 0 1rem;
+}
+
+.booking-h1 {
+    color: var(--color-title);
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+    max-width: 40rem;
+    margin: 3rem auto 1rem;
+}
+
+.booking-form {
+    max-width: 52rem;
+    margin: 3rem auto;
+}
+
+.booking-form fieldset {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 2rem 1.5rem;
+    border: 1px solid var(--color-secondary);
+    box-shadow: 6px 6px 0 var(--color-secondary);
+    padding: 0.5rem 2rem 2rem;
+    margin: 0 0 3rem;
+    min-width: 0;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-secondary);
+    padding: 0.6rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+.booking-form input[type="radio"] {
+    accent-color: var(--color-title);
+    width: auto;
+    margin: 0 0.5rem 0 0;
+}
+
+.booking-form legend {
+    font-family: 'Ballet', cursive;
+    font-size: 2rem;
+    color: var(--color-title);
+    padding: 0 0.5rem;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    outline: none;
+    border-color: var(--color-title);
+    box-shadow: 0 1px 0 var(--color-secondary);
+}
+
+.booking-hint {
+    font-size: 0.75rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.booking-field-full {
+    grid-column: 1 / -1;
+}
+
+.booking-field label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.booking-choice {
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.booking-choice label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.booking-form button {
+    display: block;
+    margin: 0 auto;
+}
+
+.booking-submit {
+    border-color: var(--color-secondary);
+    box-shadow: 5px 5px 0 var(--color-secondary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.booking-submit:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--color-secondary);
+}
+
+.booking-error {
+    color: var(--color-title);
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.booking-success {
+    max-width: 40rem;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--color-secondary);
+    box-shadow: 6px 6px 0 var(--color-secondary);
+}
+
+.booking-choice .booking-error {
+    width: 100%;
+}
+
+
+
+@media (max-width: 600px) {
+    .booking-form fieldset {
+        grid-template-columns: minmax(0,1fr);
+        padding: 1rem;
+    }
+}

@@ -55,7 +55,7 @@
         J'ai lu et j'accepte le règlement.
     </label>
 
-    <button type="submit" class="btn">Passer au formulaire.</button>
+    <button type="submit" class="btn">Passer au formulaire</button>
 </form>
 
 </main>
