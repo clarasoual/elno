@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'event_description' => $eventDescription,
         ]);
         
-        header('Location: booking.php?success=1') ;
+        header('Location: booking.php?success=1&number=' . urlencode($reservationNumber)) ;
         exit;
     }
     }
@@ -160,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="booking-success">
         <h2 class="h2-title">Merci !</h2>
         <p>Merci, votre demande a bien été envoyée. Vous recevrez un mail de confirmation sous peu. Elno vous recontactera sous 72h. </p>
+        <p>Votre numéro de demande : <strong><?= htmlspecialchars($_GET['number'] ?? '') ?></strong></p>
         </div>
     <?php else: ?>
     <form action="booking.php" method="post" class="booking-form">
