@@ -103,6 +103,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['event_date'] = 'La date ne peut pas être passée.' ;
     }
     if (empty($errors)) {
+
+    $existing = $pdo->prepare('
+    SELECT reservation_number FROM reservations
+    WHERE email = :email AND event_date = :event_date AND status = :status
+    ') ;
+    $existing->execute([
+        'email' => $email,
+        'event_date' => $eventDate,
+        'status' => 'en_attente',
+    ]);
+    $existingNumber = $existing->fetchColumn();
+    if ($existingNumber) {
+        header('Location: booking.php?success=1&duplicate=1&number=' . urlencode($existingNumber)) ;
+        exit;
+    }
+
         do {
             $reservationNumber = 'ELNO-' . date('Y') . '-' . str_pad(random_int(0,9999), 4, '0', STR_PAD_LEFT) ;
 
@@ -159,7 +175,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($_GET['success'])): ?>
         <div class="booking-success">
         <h2 class="h2-title">Merci !</h2>
+        <?php if (isset($_GET['duplicate'])): ?>
+            <p>Vous avez déjà envoyé une demande pour cette date. Elno vous recontactera sous 72 h.</p>
+        <?php else: ?>
         <p>Merci, votre demande a bien été envoyée. Vous recevrez un mail de confirmation sous peu. Elno vous recontactera sous 72h. </p>
+        <?php endif; ?>
         <p>Votre numéro de demande : <strong><?= htmlspecialchars($_GET['number'] ?? '') ?></strong></p>
         </div>
     <?php else: ?>
