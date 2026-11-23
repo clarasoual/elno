@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../src/database.php' ; 
+require __DIR__ . '/../src/mailer.php' ;
 $pdo = getPdo() ;
 $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll() ;
 $errors = [] ;
@@ -149,6 +150,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'event_description' => $eventDescription,
         ]);
         
+        $durationLabels = [
+            'moins_1h' => "Moins d'1 heure",
+            '1h_2h' => "Entre 1 et 2 heures",
+            '2h_3h' => "Entre 2 et 3 heures",
+            'plus_3h' => "Plus de 3 heures",
+        ];
+
+        $eventTypeLabels = [
+            'mariage' => "Mariage",
+            'repas_entreprise' => "Repas d'entreprise",
+            'soiree_privee' => "Soirée privée",
+            'bar_guinguette' => "Bar ou guinguette",
+            'restaurant' => "Restaurant",
+            'association' => "Association",
+            'autre' => "Autre",
+        ];
+
+        $formulaName = "";
+        foreach ($formulas as $formula) {
+            if ($formula['id'] === $formulaId) {
+                $formulaName = $formula['name'];
+            }
+        }
+
+        $recap = "Numéro de demande : " . $reservationNumber . "\n"
+        . "Nom : " . $firstName . " " . $lastName . "\n"
+        . "Email : " . $email . "\n"
+        . "Téléphone : " . $phoneNumber . "\n"
+        . "Adresse de facturation : " . $address . "\n"
+        . "Vous êtes : " . $clientType . "\n"
+        . "Formule : " . $formulaName . "\n"
+        . "Durée : " . $durationLabels[$prestationDuration] . "\n"
+        . "Date : " . $date->format('d/m/Y') . "\n"
+        . "Type d'événement : " . $eventTypeLabels[$eventType] . "\n"
+        . "Lieu : " . $eventLocation . "\n\n"
+        . "Description :\n" . $eventDescription;
+
+        $config = require __DIR__ . "/../config/config.php";
+        sendMail(
+            $email,
+            'Votre demande de réservation ' . $reservationNumber,
+            'Bonjour ' . $firstName . ",\n\n"
+            . "Votre demande a bien été reçue. Elno vous recontactera sous 72h.\n\n"
+            . "Récapitulatif de votre demande :\n\n"
+            . $recap
+        );
+
+        sendMail(
+            $config['mail']['admin_email'],
+            'Nouvelle demande ' . $reservationNumber,
+            "Nouvelle demande de réservation reçue sur le site.\n\n"
+            . $recap
+        );
+
         header('Location: booking.php?success=1&number=' . urlencode($reservationNumber)) ;
         exit;
     }
