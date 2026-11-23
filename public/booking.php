@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../src/database.php' ; 
+require __DIR__ . '/../src/mailer.php' ;
 $pdo = getPdo() ;
 $formulas = $pdo->query('SELECT id, name FROM formulas ORDER BY id')->fetchAll() ;
 $errors = [] ;
@@ -149,6 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'event_description' => $eventDescription,
         ]);
         
+        sendMail(
+            $email,
+            'Votre demande de réservation ' . $reservationNumber,
+            'Bonjour ' . $firstName . ', votre demande a bien été reçue. Votre numéro : ' . $reservationNumber
+        ) ;
         header('Location: booking.php?success=1&number=' . urlencode($reservationNumber)) ;
         exit;
     }
