@@ -150,6 +150,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'event_description' => $eventDescription,
         ]);
         
+        $durationLabels = [
+            'moins_1h' => "Moins d'1 heure",
+            '1h_2h' => "Entre 1 et 2 heures",
+            '2h_3h' => "Entre 2 et 3 heures",
+            'plus_3h' => "Plus de 3 heures",
+        ];
+
+        $eventTypeLabels = [
+            'mariage' => "Mariage",
+            'repas_entreprise' => "Repas d'entreprise",
+            'soiree_privee' => "Soirée privée",
+            'bar_guinguette' => "Bar ou guinguette",
+            'restaurant' => "Restaurant",
+            'association' => "Association",
+            'autre' => "Autre",
+        ];
+
+        $formulaName = "";
+        foreach ($formulas as $formula) {
+            if ($formula['id'] === $formulaId) {
+                $formulaName = $formula['name'];
+            }
+        }
         sendMail(
             $email,
             'Votre demande de réservation ' . $reservationNumber,
