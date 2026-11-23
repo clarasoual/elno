@@ -1,14 +1,3 @@
-# suivi d'un espace : grand titre (un seul, en haut).
-## : titre de partie.
-- en début de ligne : élément de liste.
-Du texte entre deux accents graves ` : un mot de code, par exemple `config.php`.
-
-Ce que tu écris maintenant (partie 1 seulement) :
-
-Le grand titre, avec le nom du projet.
-En dessous, 2 ou 3 phrases de présentation : c'est quoi Elno, à quoi sert le site, et que c'est toi qui le développes.
-Un titre ## pour la partie suivante, « Technologies », sans rien dessous pour l'instant.
-
 # ELNO 
 
 ## Présentation
@@ -57,27 +46,6 @@ composer install
 5. Créer le fichier de configuration
 
 - copier `config/config.example.php` en `config/config.php`
-
-- `config/config.example.php` :
-
-```
-<?php 
-return [
-    'host' => 'localhost' ,
-    'dbname' => 'elno' ,
-    'user' => 'root' ,
-    'password' => '' ,
-    'mail' => [
-        'host' => 'sandbox.smtp.example',
-        'port' => 2525,
-        'username' => '12example34',
-        'password' => '',
-        'from_email' => 'contact@example.fr',
-        'from_name' => 'NameExample',
-        'admin_email' => 'email@exemple.fr',
-    ],
-] ;
-```
 
 - remplir ses propres valeurs
 
