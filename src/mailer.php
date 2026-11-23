@@ -30,7 +30,8 @@ function sendMail(string $to, string $subject, string $body) : bool
         $mail->send();
         return true;
     } catch (Exception $e) {
-        return false;
+        error_log('Erreur email : ' . $mail->ErrorInfo) ;
+        return false ;
     }
 
 

@@ -173,11 +173,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $formulaName = $formula['name'];
             }
         }
+
+        $recap = "Numéro de demande : " . $reservationNumber . "\n"
+        . "Nom : " . $firstName . " " . $lastName . "\n"
+        . "Email : " . $email . "\n"
+        . "Téléphone : " . $phoneNumber . "\n"
+        . "Adresse de facturation : " . $address . "\n"
+        . "Vous êtes : " . $clientType . "\n"
+        . "Formule : " . $formulaName . "\n"
+        . "Durée : " . $durationLabels[$prestationDuration] . "\n"
+        . "Date : " . $date->format('d/m/Y') . "\n"
+        . "Type d'événement : " . $eventTypeLabels[$eventType] . "\n"
+        . "Lieu : " . $eventLocation . "\n\n"
+        . "Description :\n" . $eventDescription;
+
+        $config = require __DIR__ . "/../config/config.php";
         sendMail(
             $email,
             'Votre demande de réservation ' . $reservationNumber,
-            'Bonjour ' . $firstName . ', votre demande a bien été reçue. Votre numéro : ' . $reservationNumber
-        ) ;
+            'Bonjour ' . $firstName . ",\n\n"
+            . "Votre demande a bien été reçue. Elno vous recontactera sous 72h.\n\n"
+            . "Récapitulatif de votre demande :\n\n"
+            . $recap
+        );
+
+        sendMail(
+            $config['mail']['admin_email'],
+            'Nouvelle demande ' . $reservationNumber,
+            "Nouvelle demande de réservation reçue sur le site.\n\n"
+            . $recap
+        );
+
         header('Location: booking.php?success=1&number=' . urlencode($reservationNumber)) ;
         exit;
     }
